@@ -1,6 +1,7 @@
 ## About
 
-test
+Univeristy project
+
 ## Authors
 
 PJWSTK students :
