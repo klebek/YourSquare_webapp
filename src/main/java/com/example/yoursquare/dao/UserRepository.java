@@ -1,14 +1,14 @@
-package dao;
+package com.example.yoursquare.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 
-import model.User;
-import model.Ad;
+import com.example.yoursquare.model.User;
 
 
 public class UserRepository {
