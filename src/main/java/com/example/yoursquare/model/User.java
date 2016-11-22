@@ -15,17 +15,7 @@ public class User {
 	private String phone;
 	private String email;
 	private String password;
-	private String token;
-	private List<Ad> Ad;
-	private boolean admin;
-	
-	private enum active {
-		Y, N
-	}
-	private enum sex {
-		W, M
-	}
-	
+
 	public int getIdClient() {
 		return idclient;
 	}
@@ -92,19 +82,8 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getToken() {
-		return token;
-	}
-	public void setToken(String token) {
-		this.token = token;
-	}
-	public boolean isAdmin() {
-		return admin;
-	}
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
-	
+
+
 	
 
 }
