@@ -1,8 +1,10 @@
-package model;
+package com.example.yoursquare.model;
+
+import java.util.List;
 
 public class User {
 	
-	private int id;
+	private int idclient;
 	private String name;
 	private String surname;
 	private String adress;
@@ -14,6 +16,7 @@ public class User {
 	private String email;
 	private String password;
 	private String token;
+	private List<Ad> Ad;
 	private boolean admin;
 	
 	private enum active {
@@ -23,11 +26,11 @@ public class User {
 		W, M
 	}
 	
-	public int getId() {
-		return id;
+	public int getIdClient() {
+		return idclient;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdClient(int idclient) {
+		this.idclient = idclient;
 	}
 	public String getName() {
 		return name;

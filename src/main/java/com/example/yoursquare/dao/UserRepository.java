@@ -1,12 +1,12 @@
 package com.example.yoursquare.dao;
 
+import java.awt.List;
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.*;
 
 import com.example.yoursquare.model.User;
 
@@ -80,16 +80,28 @@ public class UserRepository {
 		}
 	}
 
-	public User get(int userId){
+	public User get(int clientId){
 		try{
 			
-			selectById.setInt(1, userId);
+			selectById.setInt(1, clientId);
 			ResultSet rs = selectById.executeQuery();
 			while(rs.next()){
 				User result = new User();
-				result.setId(userId);
+				result.setIdClient(clientId);
 				result.setName(rs.getString("name"));
 				result.setSurname(rs.getString("surname"));
+				result.setAdress(rs.getString("adress"));
+				result.setZipcode(rs.getString("zipcode"));
+				result.setCity(rs.getString("city"));
+				result.setRegion(rs.getString("region"));
+				result.setCountry(rs.getString("country"));
+				result.setPhone(rs.getString("phone"));
+				result.setEmail(rs.getString("email"));
+				result.setPassword(rs.getString("password"));
+				result.setToken(rs.getString("token"));
+				result.setAdmin(rs.getBoolean("admin"));
+
+
 				return result;
 			}
 		}
@@ -99,12 +111,12 @@ public class UserRepository {
 		return null;
 	}
 
-	public List<Person> getAll(){
+	public User<User> getAll(){
 		try{
-			List<Person> result = new ArrayList<Person>();
+			List<User> result = new ArrayList<User>();
 			ResultSet rs = selectAll.executeQuery();
 			while(rs.next()){
-				Person p = new Person();
+				User p = new User();
 				p.setId(rs.getInt("id"));
 				p.setName(rs.getString("name"));
 				p.setSurname(rs.getString("surname"));
@@ -118,7 +130,7 @@ public class UserRepository {
 		return null;
 	}
 	
-	public void delete(Person p){
+	public void delete(User p){
 		try{
 			delete.setInt(1, p.getId());
 			delete.executeUpdate();
@@ -127,7 +139,7 @@ public class UserRepository {
 		}
 	}
 	
-	public void add(Person p){
+	public void add(User p){
 		try{
 			
 			insert.setString(1, p.getName());
@@ -140,7 +152,7 @@ public class UserRepository {
 		
 	}
 	
-	public void update(Person p){
+	public void update(User p){
 		try{
 			
 			update.setString(1, p.getName());
