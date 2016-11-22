@@ -1,4 +1,4 @@
-package com.example.YourSquare.model;
+package model;
 
 public class User {
 	

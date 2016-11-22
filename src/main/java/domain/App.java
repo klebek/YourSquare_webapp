@@ -1,4 +1,4 @@
-package com.example.YourSquare;
+package domain;
 
 /**
  * Hello world!
