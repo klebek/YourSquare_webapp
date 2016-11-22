@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>YourSquare</artifactId>
+  <artifactId>jbdctest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>YourSquare</name>
+  <name>jbdctest</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -21,13 +21,11 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    
-	<dependency>
-    <groupId>com.github.mike10004</groupId>
-    <artifactId>mysql-dist</artifactId>
-    <version>5.6.28</version>
-	</dependency>
-    
-    
+    <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>6.0.5</version>
+</dependency>
+
   </dependencies>
 </project>
