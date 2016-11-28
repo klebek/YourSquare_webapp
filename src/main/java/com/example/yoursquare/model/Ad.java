@@ -1,4 +1,4 @@
-package model;
+package com.example.yoursquare.model;
 
 import java.sql.Date;
 

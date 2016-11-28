@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.yoursquare.model.Message;
+
 public class MessageRepository {
 
 private Connection connection;
@@ -37,7 +39,7 @@ private Connection connection;
 			createTable = connection.createStatement();
 
 			boolean tableExists = false;
-			ResultSet rs = connection.getMetaData().getTables(null, null, null, null, null, null);
+			ResultSet rs = connection.getMetaData().getTables(null, null, null, null);
 			while(rs.next()){
 				if(rs.getString("TABLE_NAME").equalsIgnoreCase("message")){
 					tableExists=true;
@@ -67,7 +69,7 @@ private Connection connection;
 				result.setToUser(rs.getString("ToUser"));
 				result.setTitle(rs.getString("title"));
 				result.setContent(rs.getString("content"));
-				result.setDate(rs.getDate("sendDate"));
+				//result.setDate(rs.getDate("sendDate"));
 				return result;
 			}
 		}
@@ -88,8 +90,8 @@ private Connection connection;
 				m.setToUser(rs.getString("ToUser"));
 				m.setTitle(rs.getString("title"));
 				m.setContent(rs.getString("content"));
-				m.setDate(rs.getDate("sendDate"));
-				result.add(a);
+				//m.setDate(rs.getDate("sendDate"));
+				result.add(m);
 			}
 			return result;
 		}

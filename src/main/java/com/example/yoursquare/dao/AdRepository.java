@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.yoursquare.model.Ad;
+
 public class AdRepository {
 
 private Connection connection;
@@ -47,7 +49,7 @@ private Connection connection;
 			createTable = connection.createStatement();
 
 			boolean tableExists = false;
-			ResultSet rs = connection.getMetaData().getTables(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+			ResultSet rs = connection.getMetaData().getTables(null, null, null, null);
 			while(rs.next()){
 				if(rs.getString("TABLE_NAME").equalsIgnoreCase("ad")){
 					tableExists=true;
@@ -76,18 +78,18 @@ private Connection connection;
 				result.setTitle(rs.getString("title"));
 				result.setFee(rs.getInt("fee"));
 				result.setAdress(rs.getString("adress"));
-        result.setCity(rs.getString("city"));
-        result.setZipcode(rs.getString("zipcode"));
-        result.setSpace(rs.getFloat("space"));
-        result.setFurnished(rs.getBoolean("furnished"));
-        result.setActive(rs.getBoolean("active"));
-        result.setaddDate(rs.getDate("addDate"));
-        result.setendDate(rs.getDate("endDate"));
-        result.setRoom(rs.getInt("room"));
-        result.setGallery(rs.getString("gallery"));
-        result.setContent(rs.getString("content"));
-        result.setType(rs.getEnum("type"));
-        result.setProperty(rs.getEnum("property"));
+				result.setCity(rs.getString("city"));
+				result.setZipcode(rs.getString("zipcode"));
+				result.setSpace(rs.getFloat("space"));
+				//result.setFurnished(rs.getBoolean("furnished"));
+				result.setActive(rs.getBoolean("active"));
+				//result.setaddDate(rs.getDate("addDate"));
+				//result.setendDate(rs.getDate("endDate"));
+				result.setRoom(rs.getInt("room"));
+				result.setGallery(rs.getString("gallery"));
+				result.setContent(rs.getString("content"));
+				//result.setType(rs.getEnum("type"));
+				//result.setProperty(rs.getEnum("property"));
 				return result;
 			}
 		}
@@ -110,15 +112,15 @@ private Connection connection;
         a.setCity(rs.getString("city"));
         a.setZipcode(rs.getString("zipcode"));
         a.setSpace(rs.getFloat("space"));
-        a.setFurnished(rs.getBoolean("furnished"));
+        //a.setFurnished(rs.getBoolean("furnished"));
         a.setActive(rs.getBoolean("active"));
-        a.setaddDate(rs.getDate("addDate"));
-        a.setendDate(rs.getDate("endDate"));
+        //a.setaddDate(rs.getDate("addDate"));
+        //a.setendDate(rs.getDate("endDate"));
         a.setRoom(rs.getInt("room"));
         a.setGallery(rs.getString("gallery"));
         a.setContent(rs.getString("content"));
-        a.setType(rs.getEnum("type"));
-        a.setProperty(rs.getEnum("property"));
+        //a.setType(rs.getEnum("type"));
+        //a.setProperty(rs.getEnum("property"));
 				result.add(a);
 			}
 			return result;

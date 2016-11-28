@@ -108,13 +108,13 @@ public class UserRepository {
 	}
 
 	// ??????
-	public User<User> getAll(){
+	public List<User> getAll(){
 		try{
 			List<User> result = new ArrayList<User>();
 			ResultSet rs = selectAll.executeQuery();
 			while(rs.next()){
 				User p = new User();
-				p.setId(rs.getInt("id"));
+				p.setIdClient(rs.getInt("id"));
 				p.setName(rs.getString("name"));
 				p.setSurname(rs.getString("surname"));
 				result.add(p);

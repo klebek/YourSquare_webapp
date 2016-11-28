@@ -1,4 +1,4 @@
-package domain;
+package com.example.yoursquare.domain;
 
 
 import java.sql.*;
