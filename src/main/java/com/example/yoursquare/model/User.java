@@ -2,9 +2,9 @@ package com.example.yoursquare.model;
 
 import java.util.List;
 
-public class User {
+public class User implements IHaveId {
 	
-	private int idclient;
+	private int id;
 	private String name;
 	private String surname;
 	private String adress;
@@ -16,11 +16,11 @@ public class User {
 	private String email;
 	private String password;
 
-	public int getIdClient() {
-		return idclient;
+	public int getId() {
+		return id;
 	}
-	public void setIdClient(int idclient) {
-		this.idclient = idclient;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
