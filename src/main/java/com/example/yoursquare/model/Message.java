@@ -2,20 +2,20 @@ package com.example.yoursquare.model;
 
 import java.sql.Date;
 
-public class Message {
+public class Message implements IHaveId {
 	
-	private int message;
+	private int id;
 	private String fromUser;
 	private String toUser;
 	private String title;
 	private String content;
 	private Date sendDate;
 	
-	public int getMessage() {
-		return message;
+	public int getId() {
+		return id;
 	}
-	public void setMessage(int message) {
-		this.message = message;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getFromUser() {
 		return fromUser;
