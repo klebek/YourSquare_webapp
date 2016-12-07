@@ -2,7 +2,7 @@ package com.example.yoursquare.model;
 
 import java.util.List;
 
-public class User implements IHaveId {
+public class User {
 	
 	private int id;
 	private String name;

@@ -2,7 +2,7 @@ package com.example.yoursquare.model;
 
 import java.sql.Date;
 
-public class Ad implements IHaveId{
+public class Ad {
 	
 	private int id;
 	private String title;
@@ -11,7 +11,7 @@ public class Ad implements IHaveId{
 	private String city;
 	private String zipcode;
 	private float space;
-	private boolean furnished;
+	private boolean firnished;
 	private boolean active;
 	private Date addDate;
 	private Date endDate;
@@ -68,11 +68,11 @@ public class Ad implements IHaveId{
 	public void setSpace(float space) {
 		this.space = space;
 	}
-	public boolean isFurnished() {
-		return furnished;
+	public boolean isFirnished() {
+		return firnished;
 	}
-	public void setFurnished(boolean furnished) {
-		this.furnished = furnished;
+	public void setFirnished(boolean firnished) {
+		this.firnished = firnished;
 	}
 	public boolean isActive() {
 		return active;
