@@ -154,5 +154,5 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements IReposi
 	protected abstract String tableName();
 	protected abstract String createTableSql();
 	protected abstract String insertSql();
-protected abstract String updateSql();
+	protected abstract String updateSql();
 }

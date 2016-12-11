@@ -12,13 +12,15 @@ import com.example.yoursquare.model.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Date;
+import java.util.*;
+import java.text.*;
 import java.sql.SQLException;
 import java.util.List;
 
 public class App {
 
 
+	@SuppressWarnings("deprecation")
 	public static void main( String[] args )
 	{
 
@@ -27,9 +29,6 @@ public class App {
 
 			Connection connection = DriverManager.getConnection(url);
 			IRepositoryCatalog catalog = new RepositoryCatalog(new UnitOfWork(connection), connection);
-
-
-
 
 
 			User klient1 = new User();
@@ -64,7 +63,9 @@ public class App {
 
 			System.out.println( "Dodaje drugiego klienta" );
 
-
+			SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+			Date d1 = new Date();
+			
 			Ad ad1 = new Ad();
 			ad1.setTitle("Room for sale");
 			ad1.setFee(100);
@@ -74,8 +75,8 @@ public class App {
 			ad1.setSpace(20);
 			ad1.setFurnished(true);
 			ad1.setActive(true);
-			ad1.setAddDate(new Date(116, 9, 10));
-			ad1.setEndDate(new Date(116,9,10));
+			ad1.setAddDate(d1);
+			ad1.setEndDate(d1);
 			ad1.setRoom(5);
 			ad1.setGallery("http://imgur.com/AgHjsu8");
 			ad1.setContent("I have [...]");
@@ -122,5 +123,7 @@ public class App {
 	        
 	    }
 	}
+
+
 
 
