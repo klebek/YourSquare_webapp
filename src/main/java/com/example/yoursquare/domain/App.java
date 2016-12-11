@@ -1,10 +1,8 @@
 package com.example.yoursquare.domain;
 
 
-import com.example.yoursquare.dao.AdRepository;
 import com.example.yoursquare.dao.IRepositoryCatalog;
 import com.example.yoursquare.dao.RepositoryCatalog;
-import com.example.yoursquare.dao.UserRepository;
 import com.example.yoursquare.dao.uow.UnitOfWork;
 import com.example.yoursquare.model.Ad;
 import com.example.yoursquare.model.Message;
@@ -13,14 +11,11 @@ import com.example.yoursquare.model.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.*;
-import java.text.*;
 import java.sql.SQLException;
 import java.util.List;
 
 public class App {
 
-
-	@SuppressWarnings("deprecation")
 	public static void main( String[] args )
 	{
 
@@ -62,9 +57,6 @@ public class App {
 			catalog.users().add(klient2);
 
 			System.out.println( "Dodaje drugiego klienta" );
-
-			SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
-			Date d1 = new Date();
 			
 			Ad ad1 = new Ad();
 			ad1.setTitle("Room for sale");
@@ -75,40 +67,42 @@ public class App {
 			ad1.setSpace(20);
 			ad1.setFurnished(true);
 			ad1.setActive(true);
-			ad1.setAddDate(d1);
-			ad1.setEndDate(d1);
+			ad1.setAddDate("2016/15/12");
+			ad1.setEndDate("2016/15/12");
 			ad1.setRoom(5);
 			ad1.setGallery("http://imgur.com/AgHjsu8");
-			ad1.setContent("I have [...]");
+			ad1.setContent("I have a dream");
 
 
 			catalog.ads().add(ad1);
 
-			List<Ad> ads = catalog.ads().byUser(klient1);
+			List<Ad> ads = catalog.ads().byId(0);
 
 			System.out.println( "Klient1 dodaje ogłoszenie" );
 
 			Message msg1 = new Message();
-			msg1.setFromUser(1);
-			msg1.setToUser(2);
-			msg1.setTitle("Wybory Prezydenckie");
-			msg1.setContent("Wybory w USA zostały tak naprawde prezydentem miał być Rudy. ");
+			msg1.setFromUser(0);
+			msg1.setToUser(1);
+			msg1.setTitle("Wybory");
+			msg1.setContent("Wybory w USA");
+			msg1.setSendDate("2016/14/10");
 
 			catalog.messages().add(msg1);
 
-			List<Message> message1 = catalog.messages().byUser(klient1);
+			List<Message> message1 = catalog.messages().byId(0);
 
 			System.out.println( "Klient1 wysyła wiadomość" );
 
 			Message msg2 = new Message();
-			msg2.setFromUser(2);
-			msg2.setToUser(1);
-			msg2.setTitle("RE: Wybory Prezydenckie");
-			msg2.setContent("A tam marian gadasz. ");
+			msg2.setFromUser(1);
+			msg2.setToUser(0);
+			msg2.setTitle("RE: Wybory");
+			msg2.setContent("A tam");
+			msg2.setSendDate("2016/15/10");
 
 			catalog.messages().add(msg2);
 
-			List<Message> message2 = catalog.messages().byUser(klient2);
+			List<Message> message2 = catalog.messages().byId(1);
 
 			System.out.println( "Klient2 wysyła wiadomość" );
 

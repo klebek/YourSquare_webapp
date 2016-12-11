@@ -33,8 +33,8 @@ import com.example.yoursquare.model.User;
                 + "fromUser INT,"
                 + "toUser INT,"
                 + "title VARCHAR(20),"
-                + "content VARCHAR(20),"
-                + "sendDate VARCHAR(20)"
+                + "content VARCHAR(30),"
+                + "sendDate VARCHAR(30)"
 				//+ "FOREIGN KEY (fromUser) REFERENCES user (id),"
 				//+ "FOREIGN KEY (toUser) REFERENCES user (id),"
 				+ ")";
@@ -55,7 +55,7 @@ import com.example.yoursquare.model.User;
                 insert.setInt(2, entity.getToUser());
                 insert.setString(3, entity.getTitle());
                 insert.setString(4, entity.getContent());
-			    insert.setString(5, entity.getSendDate().toString());
+			    insert.setString(5, entity.getSendDate());
 		}
  
         protected void setupUpdate(Message entity) throws SQLException {
@@ -63,10 +63,10 @@ import com.example.yoursquare.model.User;
                 update.setInt(2, entity.getToUser());
                 update.setString(3, entity.getTitle());
                 update.setString(4, entity.getContent());
-				update.setString(5, entity.getSendDate().toString());
+				update.setString(5, entity.getSendDate());
         }
 
-		public java.util.List<Message> byUser(User user) {
+		public java.util.List<Message> byId(Integer Id) {
 			// TODO Auto-generated method stub
 			return null;
 		}

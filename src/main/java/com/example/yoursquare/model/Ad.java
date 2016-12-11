@@ -1,6 +1,6 @@
 package com.example.yoursquare.model;
 
-import java.util.Date;
+//import java.util.Date;
 
 public class Ad implements IHaveId{
 	
@@ -14,8 +14,8 @@ public class Ad implements IHaveId{
 	private float space;
 	private boolean furnished;
 	private boolean active;
-	private Date addDate;
-	private Date endDate;
+	private String addDate;
+	private String endDate;
 	private int room;
 	private String gallery;
 	private String content;
@@ -84,16 +84,16 @@ public class Ad implements IHaveId{
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public Date getAddDate() {
+	public String getAddDate() {
 		return addDate;
 	}
-	public void setAddDate(Date addDate) {
+	public void setAddDate(String addDate) {
 		this.addDate = addDate;
 	}
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 	public int getRoom() {
