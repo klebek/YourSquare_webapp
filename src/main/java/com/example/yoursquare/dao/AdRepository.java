@@ -14,7 +14,7 @@ public class AdRepository extends RepositoryBase<Ad> implements IAdRepository {
 
 	public AdRepository(Connection connection,
 						IMapResultSetIntoEntity<Ad> mapper,
-						IUnitOfWork uow) {
+						IAdRepository ads, IUnitOfWork uow) {
 		super(connection, mapper, uow);
 	}
 	
