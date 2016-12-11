@@ -6,11 +6,7 @@ import java.sql.SQLException;
 import com.example.yoursquare.dao.mappers.*;
 import com.example.yoursquare.dao.uow.IUnitOfWork;
 import com.example.yoursquare.model.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.*;
 
 public class UserRepository extends RepositoryBase<User> implements IUserRepository {

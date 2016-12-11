@@ -18,13 +18,10 @@ public class Ad implements IHaveId{
 	private int room;
 	private String gallery;
 	private String content;
-	
-	private enum type {
-		SELL, RENT
-	}
-	private enum property {
-		FLAT, ROOM
-	}
+	private int type;
+	private int property;
+
+
 	
 	public int getId() {
 		return id;
@@ -110,7 +107,21 @@ public class Ad implements IHaveId{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public int getProperty() {
+		return property;
+	}
+	public void setProperty(int property) {
+		this.property = property;
+	}
+
+
+
+
 
 }

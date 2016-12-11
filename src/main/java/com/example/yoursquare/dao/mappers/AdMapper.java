@@ -16,13 +16,15 @@ public class AdMapper implements IMapResultSetIntoEntity<Ad>{
 		a.setZipcode(rs.getString("zipcode"));
 		a.setCity(rs.getString("city"));
 		a.setSpace(rs.getFloat("space"));
-		a.setFurnished(rs.getBoolean("phone"));
+		a.setFurnished(rs.getBoolean("furnished"));
 		a.setActive(rs.getBoolean("active"));
 		a.setAddDate(rs.getDate("addDate"));
 		a.setEndDate(rs.getDate("endDate"));
 		a.setRoom(rs.getInt("room"));
 		a.setGallery(rs.getString("gallery"));
 		a.setContent(rs.getString("content"));
+		a.setType(rs.getInt("type"));
+		a.setProperty(rs.getInt("property"));
 		return a;
 	}
 
