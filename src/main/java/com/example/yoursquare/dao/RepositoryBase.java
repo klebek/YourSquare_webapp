@@ -9,16 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.yoursquare.dao.mappers.*;
+import com.example.yoursquare.dao.uow.Entity;
 import com.example.yoursquare.dao.uow.IUnitOfWork;
+import com.example.yoursquare.dao.uow.IUnitOfWorkRepository;
 import com.example.yoursquare.model.IHaveId;
 
-public abstract class RepositoryBase<TEntity extends IHaveId> implements IRepository<TEntity> {
+public abstract class RepositoryBase<TEntity extends IHaveId> implements IRepository<TEntity>, IUnitOfWorkRepository {
 
 
 	protected Connection connection;
-
+	protected IUnitOfWork uow;
 	protected Statement createTable;
-
+	
 	protected PreparedStatement insert;
 	protected PreparedStatement delete;
 	protected PreparedStatement update;
@@ -30,6 +32,7 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements IReposi
 	protected RepositoryBase(Connection connection, 
 			IMapResultSetIntoEntity<TEntity> mapper,
 			IUnitOfWork uow) {
+		this.uow = uow;
 		this.connection = connection;
 		this.mapper = mapper;
 		try {
@@ -39,18 +42,15 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements IReposi
 			delete = connection.prepareStatement(deleteSql());	
 			update = connection.prepareStatement(updateSql());
 			selectById = connection.prepareStatement(selectByIdSql());
-			selectAll = connection.prepareStatement(selectAllSql());
-			
-			
+			selectAll = connection.prepareStatement(selectAllSql());	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public TEntity get(int userId){
+	public TEntity get(int playerId){
 		try{
-			
-			selectById.setInt(1, userId);
+			selectById.setInt(1, playerId);
 			ResultSet rs = selectById.executeQuery();
 			while(rs.next()){
 				return mapper.map(rs);
@@ -61,7 +61,6 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements IReposi
 		}
 		return null;
 	}
-
 
 	public List<TEntity> getAll(){
 		try{
@@ -78,30 +77,41 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements IReposi
 		return null;
 	}
 
-
 	public void add(TEntity entity){
+		uow.markAsNew(new Entity(entity), this);
+	}
+
+	public void update(TEntity entity){
+		uow.markAsChanged(new Entity(entity), this);
+	}
+
+	public void delete(TEntity entity){
+		uow.markAsDeleted(new Entity(entity), this);
+	}
+	
+	public void persistAdd(Entity entity){
 		try{
-			setupInsert(entity);
+			setupInsert((TEntity)entity.getEntity());
 			insert.executeUpdate();
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 		
 	}
-	public void update(TEntity entity){
+	
+	public void persistUpdate(Entity entity){
 		try{
-			setupUpdate(entity);
+			setupUpdate((TEntity)entity.getEntity());
 			update.executeUpdate();
-			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 		
 	}
 
-	public void delete(TEntity entity){
+	public void persistDelete(Entity entity){
 		try{
-			delete.setInt(1, entity.getId());
+			delete.setInt(1, ((TEntity)entity.getEntity()).getId());
 			delete.executeUpdate();
 		}catch(SQLException ex){
 			ex.printStackTrace();
@@ -129,7 +139,6 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements IReposi
 				+ " WHERE id = ?";
 	}
 	
-
 	protected String selectByIdSql() {
 		return "SELECT * FROM "
 				+ tableName()
@@ -145,5 +154,5 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements IReposi
 	protected abstract String tableName();
 	protected abstract String createTableSql();
 	protected abstract String insertSql();
-	protected abstract String updateSql();
+protected abstract String updateSql();
 }

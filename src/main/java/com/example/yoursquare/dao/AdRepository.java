@@ -14,7 +14,7 @@ public class AdRepository extends RepositoryBase<Ad> implements IAdRepository {
 
 	public AdRepository(Connection connection,
 						IMapResultSetIntoEntity<Ad> mapper,
-						IAdRepository ads, IUnitOfWork uow) {
+					 IUnitOfWork uow) {
 		super(connection, mapper, uow);
 	}
 	
@@ -48,7 +48,7 @@ public class AdRepository extends RepositoryBase<Ad> implements IAdRepository {
 
 	@Override
 	protected String insertSql() {
-		return "INSERT INTO ad(title,userId,fee,adress,city,zipcode,space,furnished,active,addDate,endDate,room,gallery,content,type,property) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		return "INSERT INTO ad(title,userId,fee,adress,city,zipcode,space,furnished,active,addDate,endDate,room,gallery,content,type,property) VALUES(?,?,?,?)";
 	}
 
 	@Override
@@ -101,7 +101,6 @@ public class AdRepository extends RepositoryBase<Ad> implements IAdRepository {
 	}
 
 	public List<Ad> byUser(User user) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

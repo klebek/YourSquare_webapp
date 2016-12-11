@@ -113,16 +113,14 @@ public class App {
 
 			catalog.saveAndClose();
 
-
-			connection.close();
-		}catch(SQLException se){
-			//Handle errors for JDBC
-			se.printStackTrace();
-		}catch(Exception e){
-			//Handle errors for Class.forName
-			e.printStackTrace();
-		}
-
-	}}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+	    	
+	        System.out.println( "Koniec" );
+	        
+	    }
+	}
 
 

@@ -24,7 +24,7 @@ public class RepositoryCatalog implements IRepositoryCatalog {
 	}
 
 	public IAdRepository ads() {
-		return new AdRepository(connection, new AdMapper(), ads(), uow);
+		return new AdRepository(connection, new AdMapper(), uow);
 	}
 
 	public IMessageRepository messages() {

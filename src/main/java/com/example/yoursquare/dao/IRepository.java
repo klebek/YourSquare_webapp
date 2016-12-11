@@ -6,7 +6,7 @@ import com.example.yoursquare.model.*;
 
 public interface IRepository<TEntity extends IHaveId> {
 
-	public TEntity get(int personId);
+	public TEntity get(int userId);
 
 	public List<TEntity> getAll();
 
