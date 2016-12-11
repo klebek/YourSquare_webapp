@@ -6,6 +6,6 @@ import com.example.yoursquare.model.*;
 
 public interface IMessageRepository extends IRepository<Message> {
 
-	public List<Message> byId(Integer Id);
+	public List<Message> byUser(User user);
 
 }

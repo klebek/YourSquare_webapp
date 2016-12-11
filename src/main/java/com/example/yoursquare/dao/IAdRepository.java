@@ -6,5 +6,5 @@ import com.example.yoursquare.model.*;
 
 public interface IAdRepository extends IRepository<Ad> {
 	
-	public List<Ad> byId(Integer Id);
+	public List<Ad> byUser(User user);
 }

@@ -42,7 +42,7 @@ public class AdRepository extends RepositoryBase<Ad> implements IAdRepository {
 					+ "content VARCHAR(50),"
 					+ "type INT,"
 					+ "property INT"
-				    //+ "FOREIGN KEY (userId) REFERENCES user (id),"
+				//    + "FOREIGN KEY (userId) REFERENCES user (id)"
 				    + ")";
 	}
 
@@ -68,8 +68,8 @@ public class AdRepository extends RepositoryBase<Ad> implements IAdRepository {
 		insert.setFloat(7, entity.getSpace());
 		insert.setBoolean(8, entity.isFurnished());
 		insert.setBoolean(9, entity.isActive());
-		insert.setString(10, entity.getAddDate());
-		insert.setString(11, entity.getEndDate());
+		insert.setString(10, entity.getAddDate().toString());
+		insert.setString(11, entity.getEndDate().toString());
 		insert.setInt(12, entity.getRoom());
 		insert.setString(13, entity.getGallery());
 		insert.setString(14, entity.getContent());
@@ -89,8 +89,8 @@ public class AdRepository extends RepositoryBase<Ad> implements IAdRepository {
 		update.setFloat(7,entity.getSpace());
 		update.setBoolean(8,entity.isFurnished());
 		update.setBoolean(9,entity.isActive());
-		update.setString(10,entity.getAddDate());
-		update.setString(11,entity.getEndDate());
+		update.setString(10,entity.getAddDate().toString());
+		update.setString(11,entity.getEndDate().toString());
 		update.setInt(12,entity.getRoom());
 		update.setString(13,entity.getGallery());
 		update.setString(14,entity.getContent());
@@ -98,7 +98,7 @@ public class AdRepository extends RepositoryBase<Ad> implements IAdRepository {
 		update.setInt(16,entity.getProperty());
 	}
 
-	public List<Ad> byId(Integer Id) {
+	public List<Ad> byUser(User user) {
 		return null;
 	}
 

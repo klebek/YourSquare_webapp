@@ -1,6 +1,6 @@
 package com.example.yoursquare.model;
 
-//import java.util.Date;
+import java.util.Date;
 
 public class Message implements IHaveId {
 	
@@ -9,7 +9,7 @@ public class Message implements IHaveId {
 	private int toUser;
 	private String title;
 	private String content;
-	private String sendDate;
+	private Date sendDate;
 	
 	public int getId() {
 		return id;
@@ -41,10 +41,10 @@ public class Message implements IHaveId {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getSendDate() {
+	public Date getSendDate() {
 		return sendDate;
 	}
-	public void setSendDate(String sendDate) {
+	public void setSendDate(Date sendDate) {
 		this.sendDate = sendDate;
 	}
 	

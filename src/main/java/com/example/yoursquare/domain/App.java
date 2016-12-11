@@ -12,10 +12,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.*;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class App {
 
+	@SuppressWarnings("deprecation")
 	public static void main( String[] args )
 	{
 
@@ -67,8 +69,8 @@ public class App {
 			ad1.setSpace(20);
 			ad1.setFurnished(true);
 			ad1.setActive(true);
-			ad1.setAddDate("2016/15/12");
-			ad1.setEndDate("2016/15/12");
+			ad1.setAddDate(new Date());
+			ad1.setEndDate(new Date(116, 14, 12));
 			ad1.setRoom(5);
 			ad1.setGallery("http://imgur.com/AgHjsu8");
 			ad1.setContent("I have a dream");
@@ -76,20 +78,20 @@ public class App {
 
 			catalog.ads().add(ad1);
 
-			List<Ad> ads = catalog.ads().byId(0);
+			List<Ad> ads = catalog.ads().byUser(klient1);
 
 			System.out.println( "Klient1 dodaje ogłoszenie" );
-
+			
 			Message msg1 = new Message();
 			msg1.setFromUser(0);
 			msg1.setToUser(1);
 			msg1.setTitle("Wybory");
 			msg1.setContent("Wybory w USA");
-			msg1.setSendDate("2016/14/10");
+			msg1.setSendDate(new Date());
 
 			catalog.messages().add(msg1);
 
-			List<Message> message1 = catalog.messages().byId(0);
+			List<Message> message1 = catalog.messages().byUser(klient1);
 
 			System.out.println( "Klient1 wysyła wiadomość" );
 
@@ -98,11 +100,11 @@ public class App {
 			msg2.setToUser(0);
 			msg2.setTitle("RE: Wybory");
 			msg2.setContent("A tam");
-			msg2.setSendDate("2016/15/10");
+			msg2.setSendDate(new Date());
 
 			catalog.messages().add(msg2);
 
-			List<Message> message2 = catalog.messages().byId(1);
+			List<Message> message2 = catalog.messages().byUser(klient2);
 
 			System.out.println( "Klient2 wysyła wiadomość" );
 

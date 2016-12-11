@@ -55,7 +55,7 @@ import com.example.yoursquare.model.User;
                 insert.setInt(2, entity.getToUser());
                 insert.setString(3, entity.getTitle());
                 insert.setString(4, entity.getContent());
-			    insert.setString(5, entity.getSendDate());
+			    insert.setString(5, entity.getSendDate().toString());
 		}
  
         protected void setupUpdate(Message entity) throws SQLException {
@@ -63,10 +63,10 @@ import com.example.yoursquare.model.User;
                 update.setInt(2, entity.getToUser());
                 update.setString(3, entity.getTitle());
                 update.setString(4, entity.getContent());
-				update.setString(5, entity.getSendDate());
+				update.setString(5, entity.getSendDate().toString());
         }
 
-		public java.util.List<Message> byId(Integer Id) {
+		public java.util.List<Message> byUser(User user) {
 			// TODO Auto-generated method stub
 			return null;
 		}

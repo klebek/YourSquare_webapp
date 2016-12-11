@@ -14,7 +14,7 @@ public class MessageMapper implements IMapResultSetIntoEntity<Message>{
 		m.setToUser(rs.getInt("toUser"));
 		m.setTitle(rs.getString("title"));
 		m.setContent(rs.getString("content"));
-		m.setSendDate(rs.getString("date"));
+		m.setSendDate(rs.getDate("date"));
 		return m;
 	}
 
