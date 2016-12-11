@@ -10,8 +10,8 @@ public class MessageMapper implements IMapResultSetIntoEntity<Message>{
 	public Message map(ResultSet rs) throws SQLException {
 		Message m = new Message();
 		m.setId(rs.getInt("id"));
-		m.setFromUser(rs.getString("fromUser"));
-		m.setToUser(rs.getString("toUser"));
+		m.setFromUser(rs.getInt("fromUser"));
+		m.setToUser(rs.getInt("toUser"));
 		m.setTitle(rs.getString("title"));
 		m.setContent(rs.getString("content"));
 		m.setSendDate(rs.getDate("date"));

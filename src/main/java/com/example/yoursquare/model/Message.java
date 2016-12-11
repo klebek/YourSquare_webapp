@@ -5,8 +5,8 @@ import java.sql.Date;
 public class Message implements IHaveId {
 	
 	private int id;
-	private String fromUser;
-	private String toUser;
+	private int fromUser;
+	private int toUser;
 	private String title;
 	private String content;
 	private Date sendDate;
@@ -17,16 +17,16 @@ public class Message implements IHaveId {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getFromUser() {
+	public int getFromUser() {
 		return fromUser;
 	}
-	public void setFromUser(String fromUser) {
+	public void setFromUser(int fromUser) {
 		this.fromUser = fromUser;
 	}
-	public String getToUser() {
+	public int getToUser() {
 		return toUser;
 	}
-	public void setToUser(String toUser) {
+	public void setToUser(int toUser) {
 		this.toUser = toUser;
 	}
 	public String getTitle() {

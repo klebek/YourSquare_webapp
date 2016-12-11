@@ -37,6 +37,7 @@ public class UserRepository extends RepositoryBase<User> implements IUserReposit
 					+ "email VARCHAR(45) NULL,"
 					+ "password VARCHAR(45) NOT NULL,"
 					+ "PRIMARY KEY (idclient))";
+
 	}
 	
 	@Override

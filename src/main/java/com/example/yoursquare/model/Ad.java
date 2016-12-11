@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Ad implements IHaveId{
 	
 	private int id;
+	private int userId;
 	private String title;
 	private int fee;
 	private String adress;
@@ -29,6 +30,12 @@ public class Ad implements IHaveId{
 	public void setId(int id) {
 		this.id = id;
 	}
+	public int getUserId(){
+	    return userId;
+    }
+    public void setUserId (int userId){
+	    this.userId = userId;
+    }
 	public String getTitle() {
 		return title;
 	}
