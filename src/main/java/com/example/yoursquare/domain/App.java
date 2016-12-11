@@ -1,8 +1,10 @@
 package com.example.yoursquare.domain;
 
 
+import com.example.yoursquare.dao.AdRepository;
 import com.example.yoursquare.dao.IRepositoryCatalog;
 import com.example.yoursquare.dao.RepositoryCatalog;
+import com.example.yoursquare.dao.UserRepository;
 import com.example.yoursquare.dao.uow.UnitOfWork;
 import com.example.yoursquare.model.Ad;
 import com.example.yoursquare.model.Message;
@@ -10,29 +12,21 @@ import com.example.yoursquare.model.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
 public class App {
-	// JDBC driver name and database URL
-	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://localhost/workdb?autoReconnect=true&useSSL=false";
 
-	//  Database credentials
-	static final String USER = "root";
-	static final String PASS = "root";
 
-	public static void main(String[] args) {
-		Connection conn = null;
+	public static void main( String[] args )
+	{
 
-		try{
-			//STEP 2: Register JDBC driver
-			Class.forName("com.mysql.cj.jdbc.Driver");
+		String url = "jdbc:hsqldb:hsql://localhost/workdb";
+		try {
 
-			//STEP 3: Open a connection
-			System.out.println("Connecting to database...");
-			conn = DriverManager.getConnection(DB_URL,USER,PASS);
-			IRepositoryCatalog catalog = new RepositoryCatalog(new UnitOfWork(conn), conn);
+			Connection connection = DriverManager.getConnection(url);
+			IRepositoryCatalog catalog = new RepositoryCatalog(new UnitOfWork(connection), connection);
 
 
 
@@ -80,9 +74,9 @@ public class App {
 			ad1.setSpace(20);
 			ad1.setFurnished(true);
 			ad1.setActive(true);
-			//ad1.setAddDate("12/2/05");
-			//ad1.setEndDate("Room for sale");
-			//ad1.setRoom("Room for sale");
+			ad1.setAddDate(new Date(116, 9, 10));
+			ad1.setEndDate(new Date(116,9,10));
+			ad1.setRoom(5);
 			ad1.setGallery("http://imgur.com/AgHjsu8");
 			ad1.setContent("I have [...]");
 
@@ -120,7 +114,7 @@ public class App {
 			catalog.saveAndClose();
 
 
-			conn.close();
+			connection.close();
 		}catch(SQLException se){
 			//Handle errors for JDBC
 			se.printStackTrace();
@@ -128,13 +122,7 @@ public class App {
 			//Handle errors for Class.forName
 			e.printStackTrace();
 		}
-			try{
-				if(conn!=null)
-					conn.close();
-			}catch(SQLException se){
-				se.printStackTrace();
-			}//end finally try
-		}//end try
-	}
+
+	}}
 
 
