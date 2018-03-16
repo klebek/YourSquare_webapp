@@ -1,6 +1,5 @@
 # YourSquare
 
-ToDo List:
+Portal z wynajmem pokoi dla młodych ludzi oparty o technologie ASP .NET, MySQL, HTML5 oraz CSS3.
 
-1. Cena (float?) w widoku edycji z poziomu "Twoje ogłoszenia" przy próbie zapisu
-2. Przekierowywanie
+Tablica ogłoszeń z możliwością podglądu oferty wynajmu pokoju, mieszkania. Opcja dodawania ogłoszeń i akceptacja moderatorów. W planach na przyszłość jest dopracowanie kilku mniej ważnych elementów, które usprawnią działanie strony
