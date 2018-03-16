@@ -1,0 +1,122 @@
+﻿body {
+    padding-top: 100px;
+    padding-bottom: 20px;
+    background-color: #fafafa;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.container {
+    width: 1400px;
+}
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+.navbar-brand {
+    padding: 0;
+    padding-top: 15px;
+    color: white;
+    margin-right: 20px;
+}
+.form-control {
+    width: 30%;
+}
+.btn-primary {
+    background: #13a57b;
+    border-color: #13a57b;
+}
+    .btn-primary:hover {
+        background: #088f6b;
+        border-color: #088f6b;
+    }
+.details {
+    color: #161616;
+}
+a {
+    color: #088f6b;
+}
+.form-group > .form-control {
+    width: 80%;
+}
+.btn-login {
+    height: 30px;
+    color: #f2f2f2 !important;
+    padding: 10px !important;
+    margin: 10px !important;
+    line-height: 8px !important;
+    line-height: 0;
+}
+.navbar-nav > li > a {
+    line-height: 30px;
+    font-weight: 600;
+}
+.small {
+    padding: 3px 14px;
+}
+.icons {
+    color: #313131;
+    font-size: 18px;
+    top: 5px;
+    margin-left: 10px;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #fff;
+    background-color: #13a57b;
+}
+a:hover, a:focus {
+    color: #13a57b;
+    text-decoration: underline;
+}
+.btn-back {
+    margin-left: 70px;
+    margin-top: 0;
+}
+.btn-back-2 {
+    margin-left: 70px;
+    margin-top: -58px;
+}
+.btn-back-3 {
+    margin-left: 706px;
+    margin-top: -78px;
+}
+.btn-back-4 {
+    margin-left: 70px;
+    margin-top: -86px;
+}
+.navbar-inverse .navbar-nav > .hehe > li > a:hover, .navbar-inverse .navbar-nav > .hehe > li > a:focus {
+    color: #fff;
+    background-color: #13a57b;
+    border-bottom-color: #FAFAFA;
+    border-bottom: 4px solid;
+}
+.navbar {
+    border: none;
+}
+.text-danger {
+    color: #d9534f;
+    font-weight: 600;
+}

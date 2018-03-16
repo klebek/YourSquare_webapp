@@ -1,0 +1,48 @@
+﻿@model YourSquare1.Models.Advertisment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Dodawanie ogłoszenia</h2>
+
+<h4>Wypełnij poniższy formularz</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Opis</label>
+                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Dodatkowe wyposażenie</label>
+                <input asp-for="AdditionalEquipmentDescription" class="form-control" />
+                <span asp-validation-for="AdditionalEquipmentDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Cena</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Adres</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <input type="file" name="files" multiple /><br />
+
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-success" />
+            </div>
+        </form>
+        <a asp-action="UserAdvertisments"><button class="btn btn-default btn-back-4">Powrót</button></a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

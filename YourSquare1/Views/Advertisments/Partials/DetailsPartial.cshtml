@@ -1,0 +1,69 @@
+﻿@model YourSquare1.Models.Advertisment
+
+
+<div>
+    <h4>Szczegóły ogłoszenia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Opis
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            Dod. wyposażenie
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalEquipmentDescription)
+        </dd>
+        <dt>
+            Cena
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            Adres
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            Zdjęcia
+        </dt>
+        <dd>
+            @{
+                if (Model.AdvertismentImages != null)
+                {
+                    foreach (var image in Model.AdvertismentImages)
+                    {
+                        var base64 = Convert.ToBase64String(image.ImageFile);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        <img src="@imgSrc" width="200px" height="150px"/>
+                    }
+                }
+            }
+        </dd>
+        <hr />
+        <dt>
+            Wystawiający
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvertismentCreator.Name)
+            @Html.DisplayFor(model => model.AdvertismentCreator.Surname)
+        </dd>
+        <dt>
+            Numer kontaktowy
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvertismentCreator.PhoneNumber)
+        </dd>
+        <dt>
+            Email
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvertismentCreator.Email)
+        </dd>
+    </dl>
+</div>

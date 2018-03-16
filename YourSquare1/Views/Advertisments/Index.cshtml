@@ -1,0 +1,92 @@
+﻿@model IEnumerable<YourSquare1.Models.Advertisment>
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Index";
+    var user = await UserManager.GetUserAsync(User);
+    var administrator = false;
+    if(user != null)
+    {
+        if (user.Administrator)
+        {
+            administrator = true;
+        }
+    }
+}
+
+<h3>Wyszukiwarka</h3>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p class="form-inline">
+            <input type="number" placeholder="Minimalna cena" name="minimumPrice" class="form-control" value="@ViewData["MinimumPrice"]" />
+            <input type="number" placeholder="Maksymalna cena" name="maximumPrice" class="form-control" value="@ViewData["MaximumPrice"]" />
+            <input type="text" class="form-control" name="SearchString" placeholder="Szukaj po adresie" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Szukaj w przedziale" class="btn btn-primary" />
+        </p>
+    </div>
+</form>
+<a asp-action="Index"><button class="btn btn-default btn-back-3">Wróć do pełnej listy</button></a>
+
+<hr />
+
+<h2>Tablica ogłoszeń</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Opis
+            </th>
+            <th>
+                Dodatkowe wyposażenie
+            </th>
+            <th>
+                Cena
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["LocalizationSortParam"]"><span style="color: #13a57b;">Adres</span></a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var shortDescription = item.Description;
+            var shortAdditionalDesc = item.AdditionalEquipmentDescription;
+
+            if (item.Description.Length > 50)
+            {
+                shortDescription = item.Description.Substring(0, 50) + " [...]";
+            }
+
+            if(item.AdditionalEquipmentDescription.Length > 50)
+            {
+                shortAdditionalDesc = item.AdditionalEquipmentDescription.Substring(0, 50) + "[...]";
+            }
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => shortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => shortAdditionalDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID"><button class="btn btn-default small">Szczegóły</button></a>
+                    @if (administrator)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ID"><button class="btn btn-warning small">Edytuj</button></a>
+                        <a asp-action="Delete" asp-route-id="@item.ID"><button class="btn btn-danger small">Usuń</button></a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

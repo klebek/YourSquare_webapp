@@ -1,0 +1,16 @@
+﻿@model YourSquare1.Models.Advertisment
+
+@{
+    ViewData["Title"] = "UserAdvertismentsDetails";
+}
+
+
+@Html.Partial("Partials/DetailsPartial", Model)
+
+<div>
+    @if (!Model.Accepted && !Model.DecisionMade)
+    {
+        <a asp-action="Edit" asp-route-id="@Model.ID"><button class="btn btn-warning">Edytuj</button></a>
+    }
+    <a asp-action="UserAdvertisments"><button class="btn btn-default">Powrót</button></a>
+</div>
