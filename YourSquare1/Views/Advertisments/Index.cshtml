@@ -22,10 +22,11 @@
             <input type="number" placeholder="Maksymalna cena" name="maximumPrice" class="form-control" value="@ViewData["MaximumPrice"]" />
             <input type="text" class="form-control" name="SearchString" placeholder="Szukaj po adresie" value="@ViewData["currentFilter"]" />
             <input type="submit" value="Szukaj w przedziale" class="btn btn-primary" />
+            <!--<a asp-action="Index"><button class="btn btn-default">Wróć do pełnej listy</button></a>-->
         </p>
     </div>
 </form>
-<a asp-action="Index"><button class="btn btn-default btn-back-3">Wróć do pełnej listy</button></a>
+<a asp-action="Index"><button class="btn btn-default">Wróć do pełnej listy</button></a>
 
 <hr />
 
